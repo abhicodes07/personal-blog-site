@@ -1,303 +1,360 @@
+{% load static %}
 <!doctype html>
 <html class="dark" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      name="description"
-      content="Abhinav Asthana — minimal writing about design, code, and meaningful digital experiences."
-    />
-    <title>Abhinav Asthana</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
 
-    <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        content: ["./**/*.{html,js}"],
-        theme: {
-          extend: {
-            colors: {
-              "ctp-peach": "#fab387",
-              "ctp-rosewater": "#f5e0dc",
-              "ctp-lavender": "#b4befe",
-              "ctp-green": "#a6e3a1",
-              "ctp-text": "#cdd6f4",
-              "ctp-subtext1": "#bac2de",
-              "ctp-subtext0": "#a6adc8",
-              "ctp-overlay2": "#9399b2",
-              "ctp-overlay1": "#7f849c",
-              "ctp-overlay0": "#6c7086",
-              "ctp-surface2": "#585b70",
-              "ctp-surface1": "#45475a",
-              "ctp-surface0": "#313244",
-              "ctp-base": "#1e1e2e",
-              "ctp-mantle": "#181825",
-              "ctp-crust": "#11111b",
-              "ctp-blue": "#89b4fa",
-              "ctp-mauve": "#cba6f7",
-            },
-            fontFamily: {
-              display: ["Inter", "sans-serif"],
-              serif: ["Lora", "serif"],
-            },
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description"
+    content="Abhinav Asthana — minimal writing about design, code, and meaningful digital experiences." />
+  <title>{% block title %}Abhi9av{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      content: ["./**/*.{html,js}"],
+      theme: {
+        extend: {
+          colors: {
+            // Catppuccin Mocha Palette
+            "ctp-rosewater": "#f5e0dc",
+            "ctp-flamingo": "#f2cdcd",
+            "ctp-pink": "#f5c2e7",
+            "ctp-mauve": "#cba6f7",
+            "ctp-red": "#f38ba8",
+            "ctp-maroon": "#eba0ac",
+            "ctp-peach": "#fab387",
+            "ctp-yellow": "#f9e2af",
+            "ctp-green": "#a6e3a1",
+            "ctp-teal": "#94e2d5",
+            "ctp-sky": "#89dceb",
+            "ctp-sapphire": "#74c7ec",
+            "ctp-blue": "#89b4fa",
+            "ctp-lavender": "#b4befe",
+            "ctp-text": "#cdd6f4",
+            "ctp-subtext1": "#bac2de",
+            "ctp-subtext0": "#a6adc8",
+            "ctp-overlay2": "#9399b2",
+            "ctp-overlay1": "#7f849c",
+            "ctp-overlay0": "#6c7086",
+            "ctp-surface2": "#585b70",
+            "ctp-surface1": "#45475a",
+            "ctp-surface0": "#313244",
+            "ctp-base": "#1e1e2e",
+            "ctp-mantle": "#181825",
+            "ctp-crust": "#11111b",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+            serif: ["Lora", "serif"],
+            "mono": ["Fira Code", "monospace"]
           },
         },
-      };
-    </script>
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
 
-    <style type="text/tailwindcss">
-      .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 400,
-          "GRAD" 0,
-          "opsz" 24;
-      }
-      body {
-        background: radial-gradient(
-          circle at top center,
-          #313244 0%,
-          #1e1e2e 50%,
-          #11111b 100%
-        );
-      }
-      .post-link {
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .post-link:hover {
-        transform: translateY(-1px);
-      }
-    </style>
-  </head>
+  body {
+    background: radial-gradient(circle at top center, #313244 0%, #1e1e2e 45%, #11111b 100%);
+    background-attachment: fixed;
+  }
 
-  <body
-    class="bg-ctp-base font-display text-ctp-text min-h-screen transition-colors duration-300"
-  >
-    <div class="max-w-3xl mx-auto px-6 py-12 flex flex-col items-center">
-      <!-- HEADER -->
-      <header class="w-full flex flex-col items-center gap-8 mb-16">
-        <div
-          class="w-full flex flex-col md:flex-row items-center justify-between gap-6"
-        >
-          <div class="text-center md:text-left">
-            <h1
-              class="text-4xl md:text-5xl font-bold tracking-tight text-ctp-rosewater"
-            >
-              Abhinav Asthana
-            </h1>
-            <p class="text-ctp-lavender font-medium text-sm mt-1">
-              Writer, Software Architect &amp; ML Enthusiast
-            </p>
-          </div>
-          <div
-            class="w-24 h-24 md:w-20 md:h-20 rounded-full border border-ctp-surface1 p-1 shrink-0"
-          >
-            <div
-              class="w-full h-full rounded-full bg-center bg-cover bg-no-repeat"
-              style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/...&quot;);
-              "
-            ></div>
-          </div>
-        </div>
+  .post-link { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+  .post-link:hover { transform: translateY(-1px); }
+  .post-content { transition: all 0.3s ease; }
 
-        <!-- Desktop Nav + Mobile Hamburger -->
-        <nav class="w-full flex items-center justify-center relative">
-          <!-- Desktop -->
-          <div
-            id="desktop-nav"
-            class="hidden md:flex items-center gap-8 border-y border-ctp-surface0 py-4 w-full justify-center"
-          >
-            <a
-              href="#"
-              class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1"
-              >Home</a
-            >
-            <a
-              href="#"
-              class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1"
-              >Read</a
-            >
-            <a
-              href="#"
-              class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1"
-              >About</a
-            >
-            <a
-              href="#"
-              class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1"
-              >Newsletter</a
-            >
-          </div>
+  /* ── FIX 1: SCROLLABLE CODE BLOCKS ─────────────────────────────────── */
+  .code-window {
+    background: #181825;
+    border: 1px solid #313244;
+  }
+  .prose pre {
+    @apply p-0 bg-transparent !important;
+  }
+  .prose .code-window pre {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-radius: 0;
+    overflow-x: auto !important;   /* ← enables horizontal scroll */
+  }
+  .prose .code-window pre > code {
+    display: block;
+    padding: 1.5rem 2rem !important;
+    white-space: pre !important;           /* ← prevents wrapping */
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    min-width: max-content;                /* ← ensures scroll kicks in */
+  }
+  .hljs { background: transparent !important; }
 
-          <!-- Mobile Menu Button -->
-          <button
-            id="menu-btn"
-            class="md:hidden text-ctp-subtext1 hover:text-ctp-lavender transition-colors p-2"
-          >
-            <span class="material-symbols-outlined text-3xl">menu</span>
-          </button>
+  /* ── FIX 2: HEADING HIERARCHY & COLORS ─────────────────────────────── */
+  .prose h1 {
+    color: #f5e0dc !important;  /* ctp-rosewater */
+    font-family: "Lora", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .prose h2 {
+    color: #cba6f7 !important;  /* ctp-mauve */
+    font-family: "Lora", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #313244;
+  }
+  .prose h3 {
+    color: #89b4fa !important;  /* ctp-blue */
+    font-family: "Lora", serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose h4 {
+    color: #94e2d5 !important;  /* ctp-teal */
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-          <!-- Mobile Menu -->
-          <div
-            id="mobile-menu"
-            class="hidden md:hidden absolute top-16 left-0 right-0 bg-ctp-mantle border border-ctp-surface0 rounded-xl mx-6 py-6 flex flex-col items-center gap-6 shadow-2xl"
-          >
-            <a href="#" class="text-lg font-medium hover:text-ctp-lavender"
-              >Home</a
-            >
-            <a href="#" class="text-lg font-medium hover:text-ctp-lavender"
-              >Read</a
-            >
-            <a href="#" class="text-lg font-medium hover:text-ctp-lavender"
-              >About</a
-            >
-            <a href="#" class="text-lg font-medium hover:text-ctp-lavender"
-              >Newsletter</a
-            >
-          </div>
-        </nav>
-      </header>
+  /* ── FIX 3: BOLD, ITALIC, UNDERLINE VISIBILITY ──────────────────────── */
+  .prose strong {
+    color: #cdd6f4 !important;  /* ctp-text — bright white */
+    font-weight: 700;
+  }
+  .prose em {
+    color: #f2cdcd !important;  /* ctp-flamingo — warm italic */
+    font-style: italic;
+  }
+  .prose u {
+    color: #b4befe !important;  /* ctp-lavender */
+    text-decoration: underline;
+    text-decoration-color: #b4befe;
+    text-underline-offset: 3px;
+  }
+  /* links while we're at it */
+  .prose a {
+    color: #89b4fa !important;  /* ctp-blue */
+    text-decoration: underline;
+    text-decoration-color: #45475a;
+    text-underline-offset: 3px;
+    transition: color 0.15s, text-decoration-color 0.15s;
+  }
+  .prose a:hover {
+    color: #b4befe !important;
+    text-decoration-color: #b4befe;
+  }
 
-      <!-- QUOTE -->
-      <section class="text-center mb-20 max-w-xl">
-        <p
-          class="font-serif italic text-xl md:text-2xl text-ctp-subtext1 leading-relaxed"
-        >
-          "Exploring the intersection of minimal aesthetics, functional
-          programming, and the quiet pursuit of meaningful digital experiences."
-        </p>
-      </section>
+  /* ── FIX 4: INLINE BACKTICK CODE COLOR ─────────────────────────────── */
+  .prose :not(pre) > code {
+    color: #a6e3a1 !important;        /* ctp-green */
+    background: #313244 !important;   /* ctp-surface0 */
+    font-family: "Fira Code", monospace;
+    font-size: 0.8em;
+    padding: 0.15em 0.45em;
+    border-radius: 0.35rem;
+    border: 1px solid #45475a;        /* ctp-surface1 */
+    /* remove default prose quote marks */
+    font-style: normal;
+  }
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    content: "" !important;           /* kills Tailwind's backtick quotes */
+  }
 
-      <!-- FEATURED POST -->
-      <div class="w-full mb-16">
-        <div
-          class="bg-ctp-surface0/50 border border-ctp-surface1 rounded-3xl p-8 hover:border-ctp-lavender transition-all post-link"
-        >
-          <div
-            class="flex items-center gap-2 text-xs uppercase tracking-widest text-ctp-overlay0 mb-3"
-          >
-            <span>Featured</span>
-            <div class="flex-1 h-px bg-ctp-surface1"></div>
-          </div>
-          <h2 class="text-2xl font-medium text-ctp-text leading-tight mb-4">
-            The Future of Minimal Design in 2025
-          </h2>
-          <p class="text-ctp-subtext1 line-clamp-3 mb-6">
-            Why less is still more — and how we’re redefining digital minimalism
-            for the AI era.
+  /* general prose code (applies to both inline + block) */
+  .prose code {
+    @apply font-mono text-sm leading-relaxed !important;
+  }
+  .prose hr {
+    display: none;
+  }
+</style>
+</head>
+
+<body class="bg-ctp-base font-display text-ctp-text min-h-screen transition-colors duration-300">
+  <div class="max-w-3xl mx-auto px-6 py-12 min-h-screen">
+    <!-- HEADER -->
+    <header class="w-full flex flex-col items-center gap-8 mb-16">
+      <div class="w-full flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-ctp-rosewater">
+            Abhinav Asthana
+          </h1>
+          <p class="text-ctp-lavender font-medium text-sm mt-1">
+            Writer, Software Architect &amp; ML Enthusiast
           </p>
-          <div class="flex items-center justify-between text-sm">
-            <span class="text-ctp-subtext0">Oct 24, 2024 • 8 min read</span>
-            <a href="#" class="text-ctp-lavender hover:underline font-medium"
-              >Read →</a
-            >
-          </div>
+        </div>
+        <div class="w-24 h-24 md:w-20 md:h-20 rounded-full border border-ctp-surface1 p-1 shrink-0 overflow-hidden">
+          <img src="{% static 'assets/Silly.jpg' %}" alt="pfp" class="w-full h-full object-cover rounded-full">
         </div>
       </div>
 
-      <!-- RECENT WRITING -->
-      <main class="w-full mb-16">
-        <div class="flex items-center justify-between mb-8">
-          <h2
-            class="text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0"
-          >
-            Recent Writing
-          </h2>
-          <div class="h-px flex-grow ml-4 bg-ctp-surface0"></div>
+      <!-- Desktop Nav + Mobile Hamburger -->
+      <nav class=" w-full flex items-center justify-center relative">
+        <!-- Desktop -->
+        <div id="desktop-nav"
+          class="hidden md:flex items-center gap-8 border-y border-ctp-surface0 py-4 w-full justify-center">
+          <a href="{% url 'blog:home' %}"
+            class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">Home</a>
+          <a href="{% url 'blog:post_list' %}"
+            class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">Read</a>
+          <a href="#" class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">About</a>
         </div>
 
-        <!-- DJANGO: Replace this static list with a for loop later -->
-        <div class="space-y-1">
-          <a
-            href="#"
-            class="group flex items-baseline gap-2 py-5 px-2 hover:bg-ctp-surface0/30 rounded-2xl transition-all post-link"
-          >
-            <h3
-              class="text-base font-medium group-hover:text-ctp-lavender text-ctp-text transition-colors"
-            >
-              Building Scalable Systems with React and Tailwind
-            </h3>
-            <div
-              class="flex-grow border-b border-dotted border-ctp-surface2 mb-1"
-            ></div>
-            <span class="text-sm font-medium text-ctp-subtext0 shrink-0"
-              >Oct 15, 2024</span
-            >
-          </a>
-          <!-- Repeat for more posts (we'll loop these in Django) -->
-          <!-- ... -->
-        </div>
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-ctp-subtext1 hover:text-ctp-lavender transition-colors p-2">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
 
-        <div class="mt-12 flex justify-center">
-          <a
-            href="#"
-            class="px-8 py-3 bg-transparent border border-ctp-surface1 text-ctp-subtext1 text-sm font-medium rounded-full hover:border-ctp-lavender hover:text-ctp-lavender transition-all"
-          >
-            View All Posts
-          </a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+          class="hidden z-50 md:hidden absolute top-16 left-6 right-6 bg-ctp-mantle border border-ctp-surface0 rounded-2xl py-8 flex flex-col items-center gap-6 shadow-2xl">
+          <a href="/" class="text-lg font-medium hover:text-ctp-lavender">Home</a>
+          <a href="#" class="text-lg font-medium text-ctp-lavender">Read</a>
+          <a href="#" class="text-lg font-medium hover:text-ctp-lavender">About</a>
         </div>
-      </main>
+      </nav>
+    </header>
 
-      <!-- FOOTER -->
-      <footer
-        class="w-full flex flex-col items-center gap-6 pt-12 border-t border-ctp-surface0"
-      >
-        <div class="flex gap-8">
-          <a
-            href="#"
-            class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors"
-            >GitHub</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors"
-            >Twitter</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors"
-            >LinkedIn</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors"
-            >RSS</a
-          >
-        </div>
-        <div class="text-center">
-          <p class="text-xs text-ctp-overlay1">
-            © 2024 Alex Rivers. Built with focus and intent.
-          </p>
-          <p
-            class="text-[10px] text-ctp-overlay0 mt-1 uppercase tracking-widest"
-          >
-            MIT Licensed
-          </p>
-        </div>
-      </footer>
-    </div>
+    {% block content %}
+    {% endblock content %}
 
-    <!-- Mobile Menu Script -->
-    <script>
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        const icon = menuBtn.querySelector(".material-symbols-outlined");
-        icon.textContent = mobileMenu.classList.contains("hidden")
-          ? "menu"
-          : "close";
-      });
-    </script>
-  </body>
+    <!-- FOOTER -->
+    <footer class="w-full flex flex-col items-center gap-6 pt-12 border-t border-ctp-surface0">
+      <div class="flex gap-8">
+        <a href="https://github.com/abhicodes07"
+          class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors">GitHub</a>
+        <a href="#" class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors">Twitter</a>
+        <a href="#" class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors">LinkedIn</a>
+      </div>
+      <div class="text-center">
+        <p class="text-xs text-ctp-overlay1">
+          © 2024 Abhinav Asthana. Built with focus and intent.
+        </p>
+        <p class="text-[10px] text-ctp-overlay0 mt-1 uppercase tracking-widest">
+          MIT Licensed
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      const icon = menuBtn.querySelector(".material-symbols-outlined");
+      icon.textContent = mobileMenu.classList.contains("hidden")
+        ? "menu"
+        : "close";
+    });
+  </script>
+  <!-- Highlight.js + Catppuccin Mocha + macOS window (perfect colors) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        hljs.highlightAll();
+
+        document.querySelectorAll('.prose pre code').forEach((codeBlock) => {
+          const pre = codeBlock.parentElement;
+
+          let lang = 'CODE';
+          const match = codeBlock.className.match(/language-(\w+)/i);
+          if (match) {
+            lang = match[1].toUpperCase();
+            if (lang === 'PYTHON') lang = 'Python';
+            if (lang === 'JAVASCRIPT' || lang === 'JS') lang = 'JavaScript';
+            if (lang === 'TYPESCRIPT' || lang === 'TS') lang = 'TypeScript';
+          }
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'my-10 code-window rounded-2xl overflow-hidden border border-ctp-surface0 shadow-2xl bg-ctp-base';
+
+          const headerHTML = `
+        <div class="flex items-center justify-between px-5 py-3 bg-ctp-crust border-b border-ctp-surface0">
+          <span class="text-xs font-mono text-ctp-overlay1">${lang}</span>
+          <div class="flex items-center gap-3">
+            <button class="copy-btn flex items-center gap-1.5 text-xs font-mono text-ctp-overlay1 hover:text-ctp-green transition-colors duration-150 select-none">
+              <span class="material-symbols-outlined copy-icon" style="font-size:15px;font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 20">content_copy</span>
+              <span class="copy-label">copy</span>
+            </button>
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-ctp-red"></div>
+              <div class="w-3 h-3 rounded-full bg-ctp-yellow"></div>
+              <div class="w-3 h-3 rounded-full bg-ctp-green"></div>
+            </div>
+          </div>
+        </div>`;
+
+          wrapper.innerHTML = headerHTML;
+          wrapper.appendChild(pre.cloneNode(true));
+          pre.parentNode.replaceChild(wrapper, pre);
+
+          // Wire up the copy button
+          const btn = wrapper.querySelector('.copy-btn');
+          const label = btn.querySelector('.copy-label');
+          const icon = btn.querySelector('.copy-icon');
+
+          btn.addEventListener('click', async () => {
+            const code = wrapper.querySelector('pre code').innerText;
+            try {
+              await navigator.clipboard.writeText(code);
+              // Success state
+              icon.textContent = 'check';
+              icon.style.fontVariationSettings = "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20";
+              label.textContent = 'copied!';
+              btn.style.color = '#a6e3a1'; // ctp-green
+              setTimeout(() => {
+                icon.textContent = 'content_copy';
+                icon.style.fontVariationSettings = "'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 20";
+                label.textContent = 'copy';
+                btn.style.color = '';
+              }, 2000);
+            } catch {
+              // Fallback for older browsers
+              const ta = document.createElement('textarea');
+              ta.value = code;
+              ta.style.position = 'fixed';
+              ta.style.opacity = '0';
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              label.textContent = 'copied!';
+              setTimeout(() => {label.textContent = 'copy';}, 2000);
+            }
+          });
+        });
+      }, 10);
+    });
+  </script>
+</body>
+
 </html>
-
