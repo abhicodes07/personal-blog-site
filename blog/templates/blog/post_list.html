@@ -5,17 +5,17 @@ Posts
 {% endblock %}
 
 {% block content %}
-<!-- IMPROVED PAGE TITLE -->
+<!-- page title -->
 <div class="flex flex-col items-start gap-2 mb-10">
   <div class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0">
     <span class="material-symbols-outlined text-sm">archive</span>
     ARCHIVE
   </div>
   <h1 class="text-4xl md:text-5xl font-bold tracking-tighter text-ctp-rosewater">All Writing</h1>
-  <p class="text-ctp-subtext1 text-lg"><!-- DJANGO -->Showing all {{ all_posts|length }} published thoughts</p>
+  <p class="text-ctp-subtext1 text-lg">Showing all {{ all_posts|length }} published thoughts</p>
 </div>
 
-<!-- IMPROVED SEARCH + FILTER (compact + mobile-friendly) -->
+<!-- search & filter -->
 <div class="flex flex-col md:flex-row gap-4 mb-12">
   <div class="relative flex-1">
     <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-ctp-overlay1">search</span>
@@ -32,14 +32,13 @@ Posts
   </div>
 </div>
 
-<!-- POST LIST - Beautiful Rectangular List Style (replaces grid) -->
+<!-- post list -->
 <div class="space-y-6 mb-16">
   {% for post in all_posts %}
   <a href="{{ post.get_absolute_url }}"
     class="group block bg-ctp-surface0/30 border border-ctp-surface1 hover:border-ctp-lavender rounded-3xl p-8 transition-all hover:bg-ctp-surface0/60 hover:shadow-xl">
 
     <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-6">
-      <!-- Title + Excerpt -->
       <div class="flex-1 min-w-0">
         <h2
           class="text-2xl font-medium text-ctp-text group-hover:text-ctp-lavender transition-colors leading-tight mb-3">
@@ -50,7 +49,6 @@ Posts
         </p>
       </div>
 
-      <!-- Metadata + Dotted Line -->
       <div class="flex items-baseline gap-4 md:min-w-[220px] md:justify-end">
         <div class="hidden md:block flex-1 border-b border-dotted border-ctp-surface2"></div>
 
