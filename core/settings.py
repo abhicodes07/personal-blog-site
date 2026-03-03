@@ -121,7 +121,21 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Media URLS
 MEDIA_ROOT = "media/"
 MEDIA_URL = os.path.join(BASE_DIR, "media/")
+
+# markdown extensions
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    "markdown.extensions.extra",
+    "pymdownx.superfences",
+    "pymdownx.highlight",
+]
+
+MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
+    "pymdownx.highlight": {
+        "use_pygments": False,  # ← We use client-side HLJS for perfect Tailwind colors
+    }
+}
