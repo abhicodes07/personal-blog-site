@@ -9,5 +9,6 @@ dependencies = [
     "django-markdownx>=4.0.9",
     "markdown>=3.10.2",
     "pillow>=12.1.1",
+    "pymdown-extensions>=10.21",
     "python-decouple>=3.8",
 ]
