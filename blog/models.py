@@ -17,12 +17,13 @@ class Post(models.Model):
         choices=[("draft", "Draft"), ("published", "Published")],
         default="draft",
     )
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("post_detail", args=[self.slug])
+        return reverse("blog:post_detail", args=[self.slug])
 
     class Meta:
         ordering = ["-published_date"]
