@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import include, path
-from .views import HomeView
+from . import views
 
 app_name = "blog"
 
 urlpatterns = [
-    path("", HomeView.as_view(), name="home"),
+    path("", views.home, name="home"),
+    path("blog/", views.post_list, name="post_list"),
+    path("blog/<slug:slug>/", views.post_detail, name="post_detail"),
 ]
