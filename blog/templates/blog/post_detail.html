@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load markdown_extras %}
+
+{% block title %}
+{{ post.title|title }}
+{% endblock %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<a href="{% url 'blog:post_list' %}"
+  class="flex items-center gap-2 text-ctp-subtext0 hover:text-ctp-lavender mb-8 text-sm transition-colors">
+  <span class="material-symbols-outlined text-base">arrow_back</span>
+  All Writing
+</a>
+
+<article class="flex-grow post-content">
+  <!-- DJANGO: Post header -->
+  <header class="mb-12">
+    <div class="flex items-center gap-2 text-ctp-mauve text-xs font-bold uppercase tracking-[0.2em] mb-4">
+      <span class="material-symbols-outlined text-sm">auto_awesome</span>
+      Engineering
+    </div>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-ctp-text leading-tight font-serif mb-6">
+      {{ post.title|title }}
+    </h1>
+    <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" alt="ctp-bar"
+      class="rounded-xl">
+    <div class="mt-4 flex items-center gap-4 text-ctp-subtext0 text-sm">
+      <span>{{ post.published_date|date:"F j, Y" }}</span>
+      <span class="w-1 h-1 rounded-full bg-ctp-surface2"></span>
+      <span>12 min read</span>
+    </div>
+  </header>
+
+  <!-- DJANGO: Markdown content rendered here (with |markdown filter) -->
+  <div class="prose prose-invert max-w-none text-ctp-subtext1 text-[17px] leading-relaxed">
+    {{ post.content|markdown }}
+  </div>
+
+  <!-- Author Card -->
+  <div
+    class="mt-20 p-8 rounded-3xl bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-lavender transition-all flex flex-col md:flex-row items-center gap-6">
+    <div class="w-16 h-16 rounded-full border border-ctp-lavender p-0.5 shrink-0">
+      <img src="{% static 'assets/Silly.jpg' %}" alt="pfp" class="w-full h-full object-cover rounded-full">
+    </div>
+    <div class="text-center md:text-left flex-1">
+      <p class="text-ctp-text font-semibold text-xl">Abhinav Asthana</p>
+      <p class="text-ctp-subtext0 text-sm">
+        Software Architect and writer. Exploring the intersection of
+        minimal aesthetics and functional systems.
+      </p>
+    </div>
+    <a href="https://github.com/abhicodes07"
+      class="md:ml-auto px-7 py-3 bg-ctp-mauve text-ctp-base text-sm font-medium rounded-2xl hover:bg-ctp-pink transition-all">
+      GitHub
+    </a>
+  </div>
+</article>
+
+{% endblock content %}
