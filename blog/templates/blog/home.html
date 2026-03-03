@@ -1,1 +1,81 @@
 {% extends "layout.html" %}
+
+{% block content %}
+<!-- QUOTE -->
+<section class="text-center mb-20">
+  <p class="font-serif italic text-xl md:text-2xl text-ctp-subtext1 leading-relaxed">
+    "Exploring the intersection of minimal aesthetics, functional
+    programming, and the quiet pursuit of meaningful digital experiences."
+  </p>
+</section>
+
+<!-- FEATURED POST -->
+{% if featured_post %}
+<div class="w-full mb-16">
+  <div
+    class="bg-ctp-surface0/50 border border-ctp-surface1 rounded-3xl p-8 hover:border-ctp-lavender transition-all post-link group">
+
+    <!-- Featured badge -->
+    <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-ctp-overlay0 mb-4">
+      <span class="material-symbols-outlined text-sm">star</span>
+      Featured
+      <div class="flex-1 h-px bg-ctp-surface1"></div>
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-2xl font-medium text-ctp-text group-hover:text-ctp-lavender transition-colors leading-tight mb-4">
+      {{ featured_post.title }}
+    </h2>
+
+    <!-- Excerpt -->
+    <p class="text-ctp-subtext1 line-clamp-3 mb-8">
+      {{ featured_post.excerpt|safe }}
+    </p>
+
+    <!-- Metadata + Link -->
+    <div class="flex items-center justify-between text-sm">
+      <span class="text-ctp-subtext0">
+        {{ featured_post.published_date|date:"F j, Y" }}
+      </span>
+      <a href="{{ featured_post.get_absolute_url }}"
+        class="text-ctp-lavender hover:underline font-medium flex items-center gap-1">
+        Read →
+      </a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- RECENT WRITING -->
+<main class="w-full mb-16">
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0">
+      Recent Writing
+    </h2>
+    <div class="h-px flex-grow ml-4 bg-ctp-surface0"></div>
+  </div>
+
+  <!-- DJANGO: Replace this static list with a for loop later -->
+  {% for post in recent_posts %}
+  <div class="space-y-1">
+    <a href="{{ post.get_absolute_url }}"
+      class="group flex items-baseline gap-2 py-5 px-2 hover:bg-ctp-surface0/30 rounded-2xl transition-all post-link">
+      <h3 class="text-base font-medium group-hover:text-ctp-lavender text-ctp-text transition-colors">
+        {{ post.title }}
+      </h3>
+      <div class="flex-grow border-b border-dotted border-ctp-surface2 mb-1"></div>
+      <span class="text-sm font-medium text-ctp-subtext0 shrink-0">{{ post.published_date|date:"F j, Y, g:i A" }}</span>
+    </a>
+    <!-- Repeat for more posts (we'll loop these in Django) -->
+    <!-- ... -->
+  </div>
+  {% endfor %}
+
+  <div class="mt-12 flex justify-center">
+    <a href="{% url 'blog:post_list' %}"
+      class="px-8 py-3 bg-transparent border border-ctp-surface1 text-ctp-subtext1 text-sm font-medium rounded-full hover:border-ctp-lavender hover:text-ctp-lavender transition-all">
+      View All Posts
+    </a>
+  </div>
+</main>
+{% endblock %}
