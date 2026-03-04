@@ -1,4 +1,5 @@
 {% load static %}
+{% load django_htmx %}
 <!doctype html>
 <html class="dark" lang="en">
 
@@ -193,10 +194,13 @@
   .prose hr {
     display: none;
   }
-</style>
+  </style>
+
+  {% htmx_script %}
 </head>
 
-<body class="bg-ctp-base font-display text-ctp-text min-h-screen transition-colors duration-300">
+<body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
+  class="bg-ctp-base font-display text-ctp-text min-h-screen transition-colors duration-300">
   <div class="max-w-3xl mx-auto px-6 py-12 min-h-screen">
     <!-- HEADER -->
     <header class="w-full flex flex-col items-center gap-8 mb-16">
