@@ -132,6 +132,8 @@ MEDIA_URL = "/media/"
 # markdown extensions
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
     "markdown.extensions.extra",
+    "markdown.extensions.admonition",
+    "blog.obsidian_callout",  # ← converts > [!TYPE] before admonition parses
     "pymdownx.superfences",
     "pymdownx.highlight",
 ]

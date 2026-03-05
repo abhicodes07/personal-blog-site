@@ -1,20 +1,19 @@
 <a href="{{ post.get_absolute_url }}"
   class="group block bg-ctp-surface0/30 border border-ctp-surface1 hover:border-ctp-lavender rounded-3xl p-8 transition-all hover:bg-ctp-surface0/60 hover:shadow-xl">
-
   <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-6">
     <div class="flex-1 min-w-0">
       <h2 class="text-2xl font-medium text-ctp-text group-hover:text-ctp-lavender transition-colors leading-tight mb-3">
         {{ post.title|title }}
       </h2>
-      <p class="text-ctp-subtext1 line-clamp-3 text-[15px]">
+      <p class="text-ctp-subtext1 line-clamp-2 text-[15px]">
         {{ post.excerpt|safe }}
       </p>
     </div>
     <div class="flex items-baseline gap-4 md:min-w-[220px] md:justify-end">
       <div class="hidden md:block flex-1 border-b border-dotted border-ctp-surface2"></div>
       <div class="md:text-right text-left text-xs uppercase tracking-widest text-ctp-overlay0 whitespace-nowrap">
-        {{ post.published_date|date:"F j, Y" }}<br>
-        <span class="font-medium text-ctp-subtext0">8 min read</span>
+        {{ post.published_date|date:"F j, Y" }}<br />
+        <span class="font-medium text-ctp-subtext0">{{ post.reading_time }}</span>
       </div>
     </div>
   </div>

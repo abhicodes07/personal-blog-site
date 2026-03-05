@@ -1,18 +1,33 @@
 /* ── MATERIAL SYMBOLS ───────────────────────────────────────────────── */
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 /* ── BODY BACKGROUND ────────────────────────────────────────────────── */
 body {
-  background: radial-gradient(circle at top center, #313244 0%, #1e1e2e 45%, #11111b 100%);
+  background: radial-gradient(
+    circle at top center,
+    #313244 0%,
+    #1e1e2e 45%,
+    #11111b 100%
+  );
   background-attachment: fixed;
 }
 
 /* ── POST TRANSITIONS ───────────────────────────────────────────────── */
-.post-link    { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-.post-link:hover { transform: translateY(-1px); }
-.post-content { transition: all 0.3s ease; }
+.post-link {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.post-link:hover {
+  transform: translateY(-1px);
+}
+.post-content {
+  transition: all 0.3s ease;
+}
 
 /* ── CODE BLOCKS ────────────────────────────────────────────────────── */
 .code-window {
@@ -40,7 +55,9 @@ body {
   line-height: 1.6;
   min-width: max-content;
 }
-.hljs { background: transparent !important; }
+.hljs {
+  background: transparent !important;
+}
 
 /* ── HEADINGS ───────────────────────────────────────────────────────── */
 .prose h1 {
@@ -104,7 +121,9 @@ body {
   text-decoration: underline;
   text-decoration-color: #45475a;
   text-underline-offset: 3px;
-  transition: color 0.15s, text-decoration-color 0.15s;
+  transition:
+    color 0.15s,
+    text-decoration-color 0.15s;
 }
 .prose a:hover {
   color: #b4befe !important;
@@ -133,7 +152,9 @@ body {
 }
 
 /* ── MISC ───────────────────────────────────────────────────────────── */
-.prose hr { display: none; }
+.prose hr {
+  display: none;
+}
 
 /* ── TABLES ─────────────────────────────────────────────────────────── */
 
@@ -144,7 +165,7 @@ body {
   -webkit-overflow-scrolling: touch;
   border-radius: 0.75rem;
   border: 1px solid #313244;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.35);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.35);
   margin: 2rem 0;
 }
 
@@ -152,18 +173,18 @@ body {
    target the table directly as a fallback */
 .prose table {
   width: 100%;
-  min-width: 480px;                   /* triggers scroll on narrow screens */
+  min-width: 480px; /* triggers scroll on narrow screens */
   border-collapse: collapse;
   font-size: 0.875rem;
-  border-radius: 0;                   /* radius lives on the wrapper */
+  border-radius: 0; /* radius lives on the wrapper */
 }
 
 /* Header row */
 .prose thead {
-  background: #181825;                /* ctp-mantle */
+  background: #181825; /* ctp-mantle */
 }
 .prose thead th {
-  color: #cba6f7 !important;          /* ctp-mauve */
+  color: #cba6f7 !important; /* ctp-mauve */
   font-family: "Inter", sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
@@ -172,7 +193,7 @@ body {
   padding: 0.85rem 1.1rem;
   text-align: left;
   border-bottom: 2px solid #313244;
-  white-space: nowrap;                /* headers stay on one line */
+  white-space: nowrap; /* headers stay on one line */
 }
 
 /* Body rows */
@@ -183,17 +204,23 @@ body {
 .prose tbody tr:last-child {
   border-bottom: none;
 }
-.prose tbody tr:nth-child(even) { background: #1e1e2e; } /* ctp-base   */
-.prose tbody tr:nth-child(odd)  { background: #181825; } /* ctp-mantle */
-.prose tbody tr:hover            { background: #313244; } /* ctp-surface0 */
+.prose tbody tr:nth-child(even) {
+  background: #1e1e2e;
+} /* ctp-base   */
+.prose tbody tr:nth-child(odd) {
+  background: #181825;
+} /* ctp-mantle */
+.prose tbody tr:hover {
+  background: #313244;
+} /* ctp-surface0 */
 
 /* Cells — allow wrapping */
 .prose tbody td {
-  color: #bac2de !important;          /* ctp-subtext1 */
+  color: #bac2de !important; /* ctp-subtext1 */
   padding: 0.7rem 1.1rem;
-  vertical-align: top;                /* top-align so wrapped rows look clean */
+  vertical-align: top; /* top-align so wrapped rows look clean */
   line-height: 1.65;
-  word-break: break-word;             /* long words wrap instead of overflowing */
+  word-break: break-word; /* long words wrap instead of overflowing */
   overflow-wrap: break-word;
 }
 
@@ -201,15 +228,198 @@ body {
 .prose tbody td:first-child {
   font-family: "Fira Code", monospace;
   font-size: 0.8rem;
-  color: #a6e3a1 !important;          /* ctp-green */
+  color: #a6e3a1 !important; /* ctp-green */
   font-weight: 600;
-  white-space: nowrap;                /* 2xx / Unit Tests — keep compact */
-  background: #11111b;                /* ctp-crust */
+  white-space: nowrap; /* 2xx / Unit Tests — keep compact */
+  background: #11111b; /* ctp-crust */
 }
 
 /* Second column — meaning / category */
 .prose tbody td:nth-child(2) {
-  color: #89b4fa !important;          /* ctp-blue */
+  color: #89b4fa !important; /* ctp-blue */
   font-weight: 500;
   /* NO nowrap — let it wrap on small screens */
+}
+
+/* ── LISTS ──────────────────────────────────────────────────────────── */
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.75rem;
+  margin: 1rem 0;
+  color: #bac2de;
+}
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.75rem;
+  margin: 1rem 0;
+  color: #bac2de;
+}
+.prose li {
+  margin: 0.35rem 0;
+  padding-left: 0.25rem;
+  line-height: 1.7;
+}
+
+/* Nested lists */
+.prose ul ul,
+.prose ol ul {
+  list-style-type: circle;
+  padding-left: 1.5rem;
+  margin: 0.25rem 0;
+}
+.prose ul ul ul,
+.prose ol ol ul,
+.prose ol ul ul {
+  list-style-type: square;
+  padding-left: 1.5rem;
+}
+.prose ol ol {
+  list-style-type: lower-alpha;
+  padding-left: 1.5rem;
+  margin: 0.25rem 0;
+}
+
+/* Marker colour */
+.prose ul li::marker {
+  color: #cba6f7;
+} /* ctp-mauve  */
+.prose ol li::marker {
+  color: #89b4fa;
+} /* ctp-blue   */
+
+/* ── ADMONITION CALLOUTS ────────────────────────────────────────────── */
+.prose .admonition {
+  margin: 2rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  border-left-width: 4px;
+  background: #181825;
+}
+.prose .admonition p:last-child {
+  margin-bottom: 0;
+}
+.prose .admonition-title {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem !important;
+}
+.prose .admonition-title::before {
+  margin-right: 0.5rem;
+  font-family: "Material Symbols Outlined";
+  font-size: 1rem;
+  vertical-align: -0.15em;
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 20;
+}
+
+/* note / info */
+.prose .admonition.note,
+.prose .admonition.info {
+  border-color: #89b4fa;
+  background: #1a1f2e;
+}
+.prose .admonition.note .admonition-title,
+.prose .admonition.info .admonition-title {
+  color: #89b4fa;
+}
+.prose .admonition.note .admonition-title::before {
+  content: "info";
+}
+.prose .admonition.info .admonition-title::before {
+  content: "info";
+}
+
+/* tip / hint / success */
+.prose .admonition.tip,
+.prose .admonition.hint,
+.prose .admonition.success {
+  border-color: #a6e3a1;
+  background: #1a2420;
+}
+.prose .admonition.tip .admonition-title,
+.prose .admonition.hint .admonition-title,
+.prose .admonition.success .admonition-title {
+  color: #a6e3a1;
+}
+.prose .admonition.tip .admonition-title::before {
+  content: "lightbulb";
+}
+.prose .admonition.hint .admonition-title::before {
+  content: "lightbulb";
+}
+.prose .admonition.success .admonition-title::before {
+  content: "check_circle";
+}
+
+/* warning / caution / attention */
+.prose .admonition.warning,
+.prose .admonition.caution,
+.prose .admonition.attention {
+  border-color: #f9e2af;
+  background: #22201a;
+}
+.prose .admonition.warning .admonition-title,
+.prose .admonition.caution .admonition-title,
+.prose .admonition.attention .admonition-title {
+  color: #f9e2af;
+}
+.prose .admonition.warning .admonition-title::before {
+  content: "warning";
+}
+.prose .admonition.caution .admonition-title::before {
+  content: "warning";
+}
+.prose .admonition.attention .admonition-title::before {
+  content: "warning";
+}
+
+/* danger / error / bug */
+.prose .admonition.danger,
+.prose .admonition.error,
+.prose .admonition.bug {
+  border-color: #f38ba8;
+  background: #221a1e;
+}
+.prose .admonition.danger .admonition-title,
+.prose .admonition.error .admonition-title,
+.prose .admonition.bug .admonition-title {
+  color: #f38ba8;
+}
+.prose .admonition.danger .admonition-title::before {
+  content: "dangerous";
+}
+.prose .admonition.error .admonition-title::before {
+  content: "error";
+}
+.prose .admonition.bug .admonition-title::before {
+  content: "bug_report";
+}
+
+/* example / quote / abstract */
+.prose .admonition.example,
+.prose .admonition.abstract,
+.prose .admonition.quote {
+  border-color: #cba6f7;
+  background: #1e1a2e;
+}
+.prose .admonition.example .admonition-title,
+.prose .admonition.abstract .admonition-title,
+.prose .admonition.quote .admonition-title {
+  color: #cba6f7;
+}
+.prose .admonition.example .admonition-title::before {
+  content: "code_blocks";
+}
+.prose .admonition.abstract .admonition-title::before {
+  content: "article";
+}
+.prose .admonition.quote .admonition-title::before {
+  content: "format_quote";
 }
