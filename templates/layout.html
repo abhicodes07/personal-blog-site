@@ -6,14 +6,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Abhinav Asthana — minimal writing about design, code, and meaningful digital experiences." />
-  <title>{% block title %}Abhi9av{% endblock %}</title>
 
-  <!-- Google Fonts -->
+  <title>{% block title %}Abhinav Asthana{% endblock %}</title>
+  <meta name="description"
+    content="{{ seo_description|default:'Exploring the intersection of minimal aesthetics, functional programming, and the quiet pursuit of meaningful digital experiences.' }}">
+  <meta name="author" content="Abhinav Asthana">
+  <link rel="canonical" href="{{ seo_url|default:request.build_absolute_uri }}">
+
+  <meta property="og:type" content="{{ seo_type|default:'website' }}">
+  <meta property="og:title" content="{{ seo_title|default:'Abhinav Asthana' }}">
+  <meta property="og:description"
+    content="{{ seo_description|default:'Exploring the intersection of minimal aesthetics, functional programming, and meaningful digital experiences.' }}">
+  <meta property="og:url" content="{{ seo_url|default:request.build_absolute_uri }}">
+  <meta property="og:site_name" content="Abhinav Asthana">
+  <meta property="og:locale" content="en_US">
+  {% if seo_image %}
+  <meta property="og:image" content="{{ seo_image }}">
+  <meta property="og:image:alt" content="{{ seo_title|default:'Abhinav Asthana' }}">
+  {% endif %}
+
+  {% if seo_type == "article" %}
+  <meta property="article:author" content="Abhinav Asthana">
+  <meta property="article:published_time" content="{{ seo_published }}">
+  <meta property="article:modified_time" content="{{ seo_updated }}">
+  {% endif %}
+
+  <meta name="twitter:site" content="@ohabhioh">
+  <meta name="twitter:card" content="{% if seo_image %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ seo_title|default:'Abhinav Asthana' }}">
+  <meta name="twitter:description"
+    content="{{ seo_description|default:'Exploring the intersection of minimal aesthetics, functional programming, and meaningful digital experiences.' }}">
+  {% if seo_image %}
+  <meta name="twitter:image" content="{{ seo_image }}">
+  {% endif %}
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
@@ -21,13 +51,10 @@
   <!-- Highlight.js theme -->
   <link rel="stylesheet" href="https://unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
 
-  <!-- Tailwind CDN — must load BEFORE the config script -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-  <!-- Tailwind config (colours, fonts, etc.) -->
   <script src="{% static 'js/tailwind.config.js' %}"></script>
 
-  <!-- Custom blog styles -->
   <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
   {% htmx_script %}
@@ -64,8 +91,7 @@
             class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">Home</a>
           <a href="{% url 'blog:post_list' %}"
             class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">Read</a>
-          <a href="#"
-            class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">About</a>
+          <a href="#" class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">About</a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -92,9 +118,9 @@
       <div class="flex gap-8">
         <a href="https://github.com/abhicodes07"
           class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors">GitHub</a>
-        <a href="#"
+        <a href="https://x.com/ohabhioh"
           class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors">Twitter</a>
-        <a href="#"
+        <a href="https://www.linkedin.com/in/abhinav-asthana/"
           class="text-sm font-medium text-ctp-overlay1 hover:text-ctp-lavender transition-colors">LinkedIn</a>
       </div>
       <div class="text-center">
@@ -109,9 +135,10 @@
   <!-- Highlight.js runtime -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
 
-  <!-- Your scripts — order matters -->
+  <!-- Your scripts -->
   <script src="{% static 'js/nav.js' %}"></script>
   <script src="{% static 'js/highlight-init.js' %}"></script>
 
 </body>
+
 </html>
