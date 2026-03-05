@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, help_text="URL-friendly name")
     content = MarkdownxField()  # ← magic Markdown field
-    excerpt = models.TextField(blank=True)  # Short text of content
+    excerpt = models.TextField(max_length=50, blank=True)  # Short text of content
     featured_image = models.ImageField(upload_to="posts/", blank=True)
     published_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
