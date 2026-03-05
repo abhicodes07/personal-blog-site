@@ -4,7 +4,7 @@
   <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-6">
     <div class="flex-1 min-w-0">
       <h2 class="text-2xl font-medium text-ctp-text group-hover:text-ctp-lavender transition-colors leading-tight mb-3">
-        {{ post.title }}
+        {{ post.title|title }}
       </h2>
       <p class="text-ctp-subtext1 line-clamp-3 text-[15px]">
         {{ post.excerpt|safe }}
