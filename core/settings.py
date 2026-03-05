@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG")
+DEBUG = config("DEBUG", cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -127,7 +127,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Media URLS
 MEDIA_ROOT = "media/"
-MEDIA_URL = os.path.join(BASE_DIR, "media/")
+MEDIA_URL = "/media/"
 
 # markdown extensions
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
