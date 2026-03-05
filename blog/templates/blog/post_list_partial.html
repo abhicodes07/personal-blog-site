@@ -1,0 +1,32 @@
+{% for post in page_obj %}
+{% include "blog/components/post_item.html" with post=post %}
+{% empty %}
+<div class="text-center py-20 text-ctp-subtext0 col-span-full">
+  {% if request.GET.q %}
+  No posts match "<strong>{{ request.GET.q }}</strong>".<br>
+  <span class="text-xs">Try a different keyword.</span>
+  {% else %}
+  No published posts yet.<br>
+  <span class="text-xs">Create your first post in the Django admin!</span>
+  {% endif %}
+</div>
+{% endfor %}
+
+<!-- OOB: Update the load more button based on this page's has_more -->
+<div hx-swap-oob="outerHTML:#load-more-button">
+  {% if has_more %}
+  <div id="load-more-button">
+    <button hx-get="?page={{ page_obj.next_page_number }}&{{ query_params }}" hx-target="#posts-container"
+      hx-swap="beforeend" hx-indicator="#loading-spinner"
+      class="w-full py-3 border border-ctp-surface1 rounded-2xl text-ctp-subtext1 hover:border-ctp-lavender transition-colors text-sm"
+      type="button">
+      Load more
+    </button>
+  </div>
+  {% else %}
+  <div id="load-more-button" style="display: none;"></div>
+  {% endif %}
+</div>
+
+<!-- OOB: Update result count in the header -->
+<span id="post-count" hx-swap-oob="true">{{ total_posts }}</span>
