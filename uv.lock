@@ -19,6 +19,7 @@ dependencies = [
     { name = "django-distill" },
     { name = "django-htmx" },
     { name = "django-markdownx" },
+    { name = "factory-boy" },
     { name = "markdown" },
     { name = "pillow" },
     { name = "pymdown-extensions" },
@@ -30,6 +31,7 @@ requires-dist = [
     { name = "django-distill", specifier = ">=3.2.7" },
     { name = "django-htmx", specifier = ">=1.27.0" },
     { name = "django-markdownx", specifier = ">=4.0.9" },
+    { name = "factory-boy", specifier = ">=3.3.3" },
     { name = "markdown", specifier = ">=3.10.2" },
     { name = "pillow", specifier = ">=12.1.1" },
     { name = "pymdown-extensions", specifier = ">=10.21" },
@@ -151,6 +153,30 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/4a/80/e4ff7b93b7518efe7fbe9b18ac5735b53fae943063df6fbef53bc454e045/django-markdownx-4.0.9.tar.gz", hash = "sha256:f82949beaddcaf5cbe765f580b1bf062b3aa5eea94633fdbbb6466514311a907", size = 32649, upload-time = "2025-04-23T12:13:32.864Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1a/76/53574402650befe1ee7b7bb2ddf49b2862a2a080c8042ff3c853922363bb/django_markdownx-4.0.9-py2.py3-none-any.whl", hash = "sha256:0e78759a8701073fee3e4883764a9bf1cdf3fe4c2941747acbe4f093f9285805", size = 42411, upload-time = "2025-04-23T12:13:31.554Z" },
+]
+
+[[package]]
+name = "factory-boy"
+version = "3.3.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "faker" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ba/98/75cacae9945f67cfe323829fc2ac451f64517a8a330b572a06a323997065/factory_boy-3.3.3.tar.gz", hash = "sha256:866862d226128dfac7f2b4160287e899daf54f2612778327dd03d0e2cb1e3d03", size = 164146, upload-time = "2025-02-03T09:49:04.433Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/27/8d/2bc5f5546ff2ccb3f7de06742853483ab75bf74f36a92254702f8baecc79/factory_boy-3.3.3-py2.py3-none-any.whl", hash = "sha256:1c39e3289f7e667c4285433f305f8d506efc2fe9c73aaea4151ebd5cdea394fc", size = 37036, upload-time = "2025-02-03T09:49:01.659Z" },
+]
+
+[[package]]
+name = "faker"
+version = "40.6.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "tzdata", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f1/99/93428681125ecde31c5a224d9170fc13d98801b0a067e14f348771c79c23/faker-40.6.0.tar.gz", hash = "sha256:de648998cadee7c7c5a8ec08736bf4f89f3109ff5dbbb2e6a2de6a381c1d0af0", size = 1955647, upload-time = "2026-03-04T15:58:42.729Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/25/9f/0dac59e800da04dbfac53c95f58127d6b7d35c29ea33d063d56448ad0c41/faker-40.6.0-py3-none-any.whl", hash = "sha256:896930c412aaa1bfbe55f38fa51393a99d4bbc492883f1ee0677019b68a4690e", size = 1988694, upload-time = "2026-03-04T15:58:40.752Z" },
 ]
 
 [[package]]
