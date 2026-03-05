@@ -1,4 +1,3 @@
-from django.core import paginator
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 from .models import Post
@@ -17,15 +16,32 @@ def home(request):
 
 def post_list(request):
     all_posts = Post.objects.filter(status="published")
-    paginator = Paginator(all_posts, 10)
-
     page_number = request.GET.get("page", 1)
+
+    # filters
+    query_params = request.GET.copy()
+    if "page" in query_params:
+        del query_params["page"]
+
+    if "q" in query_params:
+        all_posts = all_posts.filter(title__icontains=query_params["q"])
+
+    if "sort" in query_params:
+        sort_dir = "-" if query_params["sort"] == "newest" else ""
+        all_posts = all_posts.order_by(f"{sort_dir}published_date")
+
+    paginator = Paginator(all_posts, 5)
     page_obj = paginator.get_page(page_number)
 
-    context = {"page_obj": page_obj, "total_posts": paginator.count}
+    context = {
+        "page_obj": page_obj,
+        "total_posts": paginator.count,
+        "has_more": page_obj.has_next,
+        "query_params": query_params.urlencode(),
+    }
 
     if request.htmx:
-        return render(request, "blog/partials/post_list_partial.html", context=context)
+        return render(request, "blog/post_list_partial.html", context=context)
     return render(request, "blog/post_list.html", context=context)
 
 
