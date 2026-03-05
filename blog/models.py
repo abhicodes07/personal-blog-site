@@ -19,6 +19,13 @@ class Post(models.Model):
     )
     featured = models.BooleanField(default=False)
 
+    @property
+    def reading_time(self):
+        # estimated reading time (100 wpm assumed)
+        word_count = len(self.content.split())
+        minutes = max(1, round(word_count / 100))
+        return f"{minutes} min read"
+
     def __str__(self):
         return self.title
 
