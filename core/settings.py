@@ -153,7 +153,7 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
 # whitenoise storage
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", cast=bool)
-SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", cast=bool)
-CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", cast=bool)
+SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", cast=bool, default=False)
+SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", cast=bool, default=False)
+CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", cast=bool, default=False)
 SECURE_HSTS_SECONDS = config("SECURE_HSTS_SECONDS", cast=int)
