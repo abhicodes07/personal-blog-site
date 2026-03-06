@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from typing import cast
 from decouple import config
 import os
 
@@ -149,3 +150,8 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
 
 # whitenoise storage
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+SECURE_SSL_REDIRECT = config("SECRET_KEY", cast=bool)
+SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", cast=bool)
+CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", cast=bool)
+SECURE_HSTS_SECONDS = config("SECURE_HSTS_SECONDS", cast=int)
