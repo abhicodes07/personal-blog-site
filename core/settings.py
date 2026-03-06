@@ -27,7 +27,9 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS", default="", cast=lambda v: [s.strip() for s in v.split(",")]
+)
 
 
 # Application definition
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -126,7 +129,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Media URLS
-MEDIA_ROOT = "media/"
+MEDIA_ROOT = BASE_DIR / "media/"
 MEDIA_URL = "/media/"
 
 # markdown extensions
@@ -143,3 +146,6 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
         "use_pygments": False,  # ← We use client-side HLJS for perfect Tailwind colors
     }
 }
+
+# whitenoise storage
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
