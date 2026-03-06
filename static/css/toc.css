@@ -1,0 +1,75 @@
+/* ── TABLE OF CONTENTS ───────────────────────────────────────────────── */
+
+/* Desktop: pull the sidebar out of normal flow so it floats to the right
+   of the article without affecting the max-w-3xl layout                  */
+@media (min-width: 1280px) {
+  #toc-panel {
+    position: fixed;
+    top: 7rem;
+    /* sit just outside the 3xl container (~768px) + breathing room */
+    left: calc(50% + 400px);
+    width: 13rem;
+    max-height: calc(100vh - 9rem);
+  }
+}
+
+/* ── TOC link base ──────────────────────────────────────────────────── */
+.toc-link {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  color: #7f849c;               /* ctp-overlay1 */
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  word-break: break-word;
+}
+.toc-link:hover {
+  color: #b4befe;               /* ctp-lavender */
+  background: rgba(180, 190, 254, 0.06);
+}
+
+/* Active link */
+.toc-link.toc-active {
+  color: #b4befe;
+  border-left-color: #b4befe;
+  background: rgba(180, 190, 254, 0.08);
+  font-weight: 500;
+}
+
+/* ── Hierarchy indentation ──────────────────────────────────────────── */
+.toc-h1 { padding-left: 0.5rem;  font-weight: 600; font-size: 0.8rem; }
+.toc-h2 { padding-left: 1rem; }
+.toc-h3 { padding-left: 1.75rem; font-size: 0.74rem; }
+.toc-h4 { padding-left: 2.5rem;  font-size: 0.72rem; }
+
+/* ── Mobile drawer open state ───────────────────────────────────────── */
+#toc-panel.toc-open {
+  transform: translateY(0) !important;
+}
+#toc-backdrop.toc-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* ── TOC nav scrollbar ──────────────────────────────────────────────── */
+#toc-nav::-webkit-scrollbar       { width: 3px; }
+#toc-nav::-webkit-scrollbar-track { background: transparent; }
+#toc-nav::-webkit-scrollbar-thumb { background: #313244; border-radius: 2px; }
+#toc-nav::-webkit-scrollbar-thumb:hover { background: #45475a; }
+
+/* ── Reading-progress strip ─────────────────────────────────────────── */
+#toc-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #cba6f7, #b4befe);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.1s linear;
+  z-index: 60;
+}
