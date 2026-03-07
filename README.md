@@ -1,13 +1,14 @@
 <h1>📝 Blog</h1>
 
+<p>
 <img src="https://img.shields.io/badge/Framework-Django_6.0-c6a0f6?style=for-the-badge&logo=django&logoColor=cad3f5&logoSize=auto&labelColor=24273a">
 <img src="https://img.shields.io/badge/Markdown-markdownx_%7C_pymdown-f5a97f?style=for-the-badge&logo=markdown&logoColor=cad3f5&logoSize=auto&labelColor=24273a">
 <img src="https://img.shields.io/badge/interactivity-htmx-a6da95?style=for-the-badge&logo=htmx&logoColor=cad3f5&logoSize=auto&labelColor=24273a">
 <img src="https://img.shields.io/badge/styling-tailwind-8bd5ca?style=for-the-badge&logo=css&logoColor=cad3f5&logoSize=auto&labelColor=24273a">
 <img src="https://img.shields.io/badge/package_manager-uv-7dc4e4?style=for-the-badge&logo=astral&logoColor=cad3f5&logoSize=auto&labelColor=24273a">
 <img src="https://img.shields.io/badge/database-sqlite3_%7C_postgres-f5bde6?style=for-the-badge&logo=databricks&logoColor=cad3f5&logoSize=auto&labelColor=24273a">
+</p>
 
-<br/>
 <br/>
 <img src="assets/post.png">
 <br/>
