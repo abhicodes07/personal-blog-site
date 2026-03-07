@@ -67,6 +67,8 @@
   <div class="max-w-3xl mx-auto px-6 py-12 min-h-screen">
 
     <!-- HEADER -->
+    {% block header %}
+
     <header class="w-full flex flex-col items-center gap-8 mb-16">
       <div class="w-full flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="text-center md:text-left">
@@ -92,7 +94,8 @@
             class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">Home</a>
           <a href="{% url 'blog:post_list' %}"
             class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">Read</a>
-          <a href="#" class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">About</a>
+          <a href="{% url 'blog:about' %}"
+            class="text-sm font-medium hover:text-ctp-lavender transition-colors text-ctp-subtext1">About</a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -103,12 +106,13 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu"
           class="hidden z-50 md:hidden absolute top-16 left-6 right-6 bg-ctp-mantle border border-ctp-surface0 rounded-2xl py-8 flex flex-col items-center gap-6 shadow-2xl">
-          <a href="/" class="text-lg font-medium hover:text-ctp-lavender">Home</a>
-          <a href="#" class="text-lg font-medium text-ctp-lavender">Read</a>
-          <a href="#" class="text-lg font-medium hover:text-ctp-lavender">About</a>
+          <a href="{% url 'blog:home' %}" class="text-lg font-medium hover:text-ctp-lavender">Home</a>
+          <a href="{% url 'blog:post_list' %}" class="text-lg font-medium text-ctp-lavender">Read</a>
+          <a href="{% url 'blog:about' %}" class="text-lg font-medium hover:text-ctp-lavender">About</a>
         </div>
       </nav>
     </header>
+    {% endblock header %}
 
     <!-- PAGE CONTENT -->
     {% block content %}
