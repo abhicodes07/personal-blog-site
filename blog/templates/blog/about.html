@@ -1,0 +1,617 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}About — Abhinav Asthana{% endblock %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+
+<style>
+  /* ── ABOUT PAGE SPECIFIC ANIMATIONS ─────────────────────────── */
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes barGrow {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: var(--bar-width);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+
+    70% {
+      transform: scale(1.18);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1.18);
+      opacity: 0;
+    }
+  }
+
+  .animate-fade-up {
+    animation: fadeSlideUp 0.55s ease both;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.55s ease both;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease both;
+  }
+
+  .delay-100 {
+    animation-delay: 0.10s;
+  }
+
+  .delay-150 {
+    animation-delay: 0.15s;
+  }
+
+  .delay-200 {
+    animation-delay: 0.20s;
+  }
+
+  .delay-250 {
+    animation-delay: 0.25s;
+  }
+
+  .delay-300 {
+    animation-delay: 0.30s;
+  }
+
+  .delay-350 {
+    animation-delay: 0.35s;
+  }
+
+  .delay-400 {
+    animation-delay: 0.40s;
+  }
+
+  .delay-450 {
+    animation-delay: 0.45s;
+  }
+
+  .delay-500 {
+    animation-delay: 0.50s;
+  }
+
+  .delay-550 {
+    animation-delay: 0.55s;
+  }
+
+  .delay-600 {
+    animation-delay: 0.60s;
+  }
+
+  /* Skill bar animation triggers via JS */
+  .skill-bar {
+    width: 0%;
+    transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Interest card hover glow */
+  .interest-card {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .interest-card:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Avatar pulse ring */
+  .avatar-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    border: 2px solid #b4befe;
+    animation: pulse-ring 2.4s ease-out infinite;
+  }
+
+  /* Timeline dot */
+  .timeline-dot {
+    width: 10px;
+    height: 10px;
+    background: #cba6f7;
+    border-radius: 9999px;
+    box-shadow: 0 0 0 3px #1e1e2e, 0 0 0 5px #cba6f7;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  /* Scrollbar for the page */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #313244;
+    border-radius: 4px;
+  }
+</style>
+
+<!-- ── BREADCRUMB ──────────────────────────────────────────────── -->
+<a href="{% url 'blog:home' %}"
+  class="flex items-center gap-2 text-ctp-subtext0 hover:text-ctp-lavender mb-10 text-sm transition-colors animate-fade-in">
+  <span class="material-symbols-outlined text-base">arrow_back</span>
+  Back to Home
+</a>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<section class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-20 animate-fade-up">
+
+  <!-- Bio block -->
+  <div class="flex-1 text-center md:text-left">
+    <div
+      class="flex items-center justify-center md:justify-start gap-2 text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0 mb-3 animate-fade-up delay-150">
+      <span class="material-symbols-outlined text-sm">person</span>
+      About me
+    </div>
+    <h1
+      class="text-4xl md:text-5xl font-bold tracking-tight text-ctp-rosewater font-serif mb-4 animate-fade-up delay-200">
+      Abhinav Asthana
+    </h1>
+    <p class="text-ctp-subtext1 text-lg leading-relaxed max-w-xl animate-fade-up delay-250">
+      Software architect, math enthusiast, and occasional doodler — building
+      things at the intersection of <span class="text-ctp-mauve font-medium">clean systems</span>,
+      <span class="text-ctp-blue font-medium">intelligent machines</span>, and
+      <span class="text-ctp-green font-medium">minimal aesthetics</span>.
+    </p>
+
+    <!-- Social pills -->
+    <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-6 animate-fade-up delay-300">
+      <a href="https://github.com/abhicodes07"
+        class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-ctp-surface0 border border-ctp-surface1 hover:border-ctp-lavender hover:text-ctp-lavender text-ctp-subtext1 text-sm transition-all">
+        <img src="{% static 'assets/macchiato_github.svg' %}" alt="gh" class="w-4 h-4">
+        GitHub
+      </a>
+      <a href="https://x.com/ohabhioh"
+        class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-ctp-surface0 border border-ctp-surface1 hover:border-ctp-sky hover:text-ctp-sky text-ctp-subtext1 text-sm transition-all">
+        <span class="material-symbols-outlined text-base">alternate_email</span>
+        Twitter / X
+      </a>
+      <a href="https://www.linkedin.com/in/abhinav-asthana/"
+        class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-ctp-surface0 border border-ctp-surface1 hover:border-ctp-blue hover:text-ctp-blue text-ctp-subtext1 text-sm transition-all">
+        <span class="material-symbols-outlined text-base">work</span>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <!-- Avatar -->
+  <div class="relative avatar-ring shrink-0 animate-scale-in delay-100">
+    <div
+      class="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-2 border-ctp-lavender shadow-2xl shadow-ctp-lavender/20">
+      <img src="{% static 'assets/Silly.jpg' %}" alt="Abhinav Asthana" class="w-full h-full object-cover">
+    </div>
+    <!-- Status dot -->
+    <span class="absolute bottom-2 right-2 w-4 h-4 bg-ctp-green rounded-full border-2 border-ctp-base shadow"></span>
+  </div>
+
+</section>
+
+<!-- ── SECTION DIVIDER HELPER ─────────────────────────────────── -->
+{% comment %}reusable pattern below{% endcomment %}
+
+<!-- ── WHO I AM ───────────────────────────────────────────────── -->
+<section class="mb-20 animate-fade-up delay-200">
+  <div class="flex items-center gap-3 mb-8">
+    <span class="material-symbols-outlined text-ctp-mauve text-sm">auto_stories</span>
+    <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0">Who I am</h2>
+    <div class="flex-1 h-px bg-ctp-surface0"></div>
+  </div>
+
+  <div
+    class="bg-ctp-surface0/30 border border-ctp-surface1 rounded-3xl p-8 space-y-5 text-ctp-subtext1 text-[16px] leading-relaxed">
+    <p>
+      I'm a software architect and ML enthusiast who loves reasoning from first principles —
+      whether that means tracing a bug down to a single errant pointer in
+      <span class="text-ctp-peach font-medium font-mono text-sm">C</span>,
+      or proving a convergence bound on a gradient-descent variant at 2 AM.
+    </p>
+    <p>
+      By day I architect web systems with <span class="text-ctp-green font-medium">Django</span>,
+      design APIs documented in <span class="text-ctp-peach font-medium">Postman</span>,
+      and run them on <span class="text-ctp-blue font-medium">Linux</span> machines I've
+      inevitably over-configured. By night I read papers on
+      <span class="text-ctp-mauve font-medium">AI / ML</span>, grind
+      <span class="text-ctp-yellow font-medium">data structures</span> problems,
+      or fill a sketchbook with whatever my hand decides to draw.
+    </p>
+    <p>
+      When I step away from the screen, you'll find me outside — hanging from a bar
+      working on <span class="text-ctp-red font-medium">calisthenics</span> skills,
+      or just sitting somewhere quiet watching
+      <span class="text-ctp-teal font-medium">nature</span> do its thing.
+    </p>
+  </div>
+</section>
+
+<!-- ── INTERESTS GRID ─────────────────────────────────────────── -->
+<section class="mb-20 animate-fade-up delay-250">
+  <div class="flex items-center gap-3 mb-8">
+    <span class="material-symbols-outlined text-ctp-lavender text-sm">interests</span>
+    <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0">Interests &amp; Stack</h2>
+    <div class="flex-1 h-px bg-ctp-surface0"></div>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+
+    <!-- Linux -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-blue hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-blue/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-blue/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-blue text-lg">terminal</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Linux</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Daily driver. Rices configs, writes shell scripts, reads man
+        pages for fun.</p>
+    </div>
+
+    <!-- Maths -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-mauve hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-mauve/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-mauve/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-mauve text-lg">functions</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Mathematics</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Linear algebra, combinatorics, probability. Beauty in proofs.
+      </p>
+    </div>
+
+    <!-- AI / ML -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-pink hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-pink/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-pink/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-pink text-lg">memory</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">AI / ML</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Deep learning, gradient magic, and understanding what the
+        model actually learned.</p>
+    </div>
+
+    <!-- Data Structures -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-yellow hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-yellow/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-yellow/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-yellow text-lg">account_tree</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Data Structures</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Trees, graphs, heaps — practitioner, not just theorist.</p>
+    </div>
+
+    <!-- C Language -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-peach hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-peach/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-peach/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-peach text-lg">code</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">C Language</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Pointers, manual memory, and a healthy respect for undefined
+        behaviour.</p>
+    </div>
+
+    <!-- Django -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-green hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-green/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-green/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-green text-lg">dns</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Django</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Batteries-included web framework. ORM lover, HTMX enjoyer.
+      </p>
+    </div>
+
+    <!-- Postman -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-sapphire hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-sapphire/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-sapphire/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-sapphire text-lg">api</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Postman</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">API design, testing collections, and keeping contracts
+        honest.</p>
+    </div>
+
+    <!-- Doodling / Art -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-flamingo hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-flamingo/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-flamingo/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-flamingo text-lg">draw</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Doodling &amp; Art</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Sketchbooks, fine-liners, and the bliss of drawing with zero
+        agenda.</p>
+    </div>
+
+    <!-- Calisthenics -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-red hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-red/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-red/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-red text-lg">fitness_center</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Calisthenics</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Bodyweight mastery. Working toward the planche, one rep at a
+        time.</p>
+    </div>
+
+    <!-- Nature -->
+    <div
+      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-teal hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-teal/10 rounded-2xl p-5">
+      <div class="w-9 h-9 rounded-xl bg-ctp-teal/10 flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-ctp-teal text-lg">park</span>
+      </div>
+      <p class="text-ctp-text font-semibold text-sm mb-1">Nature</p>
+      <p class="text-ctp-subtext0 text-xs leading-relaxed">Long walks, open skies, and the kind of silence screens can't
+        replicate.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SKILL BARS ─────────────────────────────────────────────── -->
+<section class="mb-20 animate-fade-up delay-300">
+  <div class="flex items-center gap-3 mb-8">
+    <span class="material-symbols-outlined text-ctp-peach text-sm">bar_chart</span>
+    <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0">Proficiency</h2>
+    <div class="flex-1 h-px bg-ctp-surface0"></div>
+  </div>
+
+  <div class="space-y-5" id="skill-bars">
+
+    <!-- Python -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">Python</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">92%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-green to-ctp-teal" data-width="92%"></div>
+      </div>
+    </div>
+
+    <!-- C Language -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">C Language</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">80%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-peach to-ctp-yellow" data-width="80%"></div>
+      </div>
+    </div>
+
+    <!-- Django -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">Django</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">88%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-green to-ctp-sapphire" data-width="88%">
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Structures -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">Data Structures</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">85%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-yellow to-ctp-peach" data-width="85%"></div>
+      </div>
+    </div>
+
+    <!-- Linux -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">Linux</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">90%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-blue to-ctp-lavender" data-width="90%">
+        </div>
+      </div>
+    </div>
+
+    <!-- Mathematics -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">Mathematics</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">75%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-mauve to-ctp-pink" data-width="75%"></div>
+      </div>
+    </div>
+
+    <!-- AI / ML -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">AI / ML</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">72%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-pink to-ctp-flamingo" data-width="72%">
+        </div>
+      </div>
+    </div>
+
+    <!-- Postman -->
+    <div class="skill-item">
+      <div class="flex justify-between items-baseline mb-2">
+        <span class="text-sm font-medium text-ctp-text">Postman / API Design</span>
+        <span class="text-xs text-ctp-overlay1 font-mono skill-label">82%</span>
+      </div>
+      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-sapphire to-ctp-blue" data-width="82%">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CURRENTLY SECTION ───────────────────────────────────────── -->
+<section class="mb-20 animate-fade-up delay-350">
+  <div class="flex items-center gap-3 mb-8">
+    <span class="material-symbols-outlined text-ctp-sky text-sm">update</span>
+    <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-ctp-overlay0">Currently</h2>
+    <div class="flex-1 h-px bg-ctp-surface0"></div>
+  </div>
+
+  <div class="space-y-5">
+
+    <!-- Reading -->
+    <div class="flex gap-4 items-start group">
+      <div class="timeline-dot mt-1.5 group-hover:bg-ctp-mauve transition-colors duration-200"></div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-ctp-overlay0 mb-1">Reading</p>
+        <p class="text-ctp-text font-medium text-sm">Deep Learning — Goodfellow, Bengio &amp; Courville</p>
+        <p class="text-ctp-subtext0 text-xs mt-0.5">Chasing the math behind backprop and attention mechanisms.</p>
+      </div>
+    </div>
+
+    <!-- Building -->
+    <div class="flex gap-4 items-start group">
+      <div class="timeline-dot mt-1.5 group-hover:bg-ctp-blue transition-colors duration-200"></div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-ctp-overlay0 mb-1">Building</p>
+        <p class="text-ctp-text font-medium text-sm">This blog — Django + HTMX + Catppuccin</p>
+        <p class="text-ctp-subtext0 text-xs mt-0.5">A minimal, Markdown-first writing space with no ads, no trackers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Practising -->
+    <div class="flex gap-4 items-start group">
+      <div class="timeline-dot mt-1.5 group-hover:bg-ctp-red transition-colors duration-200"></div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-ctp-overlay0 mb-1">Practising</p>
+        <p class="text-ctp-text font-medium text-sm">Calisthenics — muscle-up → front lever progression</p>
+        <p class="text-ctp-subtext0 text-xs mt-0.5">Three sessions a week. Slow, deliberate, consistent.</p>
+      </div>
+    </div>
+
+    <!-- Learning -->
+    <div class="flex gap-4 items-start group">
+      <div class="timeline-dot mt-1.5 group-hover:bg-ctp-green transition-colors duration-200"></div>
+      <div>
+        <p class="text-xs uppercase tracking-widest text-ctp-overlay0 mb-1">Learning</p>
+        <p class="text-ctp-text font-medium text-sm">Systems programming in C — writing a small HTTP server</p>
+        <p class="text-ctp-subtext0 text-xs mt-0.5">Because understanding the foundation makes everything else click.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="mb-16 animate-fade-up delay-400">
+  <div
+    class="bg-gradient-to-br from-ctp-surface0/60 to-ctp-mantle border border-ctp-surface1 hover:border-ctp-lavender transition-all rounded-3xl p-10 text-center">
+    <span class="material-symbols-outlined text-ctp-lavender text-3xl mb-4 block">waving_hand</span>
+    <h3 class="text-2xl font-bold text-ctp-rosewater font-serif mb-3">Let's connect</h3>
+    <p class="text-ctp-subtext1 max-w-md mx-auto mb-8 text-sm leading-relaxed">
+      Whether it's a paper you think I'd enjoy, a project idea, or just a
+      well-reasoned argument about why tabs beat spaces — my inbox is open.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="https://github.com/abhicodes07"
+        class="px-7 py-3 bg-ctp-mauve text-ctp-base text-sm font-semibold rounded-2xl hover:bg-ctp-lavender transition-all shadow-lg shadow-ctp-mauve/20">
+        View GitHub
+      </a>
+      <a href="{% url 'blog:post_list' %}"
+        class="px-7 py-3 bg-transparent border border-ctp-surface1 text-ctp-subtext1 text-sm font-medium rounded-2xl hover:border-ctp-lavender hover:text-ctp-lavender transition-all">
+        Read my writing
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILL BAR ANIMATION SCRIPT ─────────────────────────────── -->
+<script>
+  (function () {
+    function animateBars() {
+      document.querySelectorAll('.skill-bar').forEach(bar => {
+        const target = bar.dataset.width;
+        // Use rAF so transition fires after paint
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            bar.style.width = target;
+          });
+        });
+      });
+    }
+
+    // IntersectionObserver — fire bars when section scrolls into view
+    const section = document.getElementById('skill-bars');
+    if (section) {
+      const obs = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          animateBars();
+          obs.disconnect();
+        }
+      }, {threshold: 0.15});
+      obs.observe(section);
+    } else {
+      animateBars();
+    }
+  })();
+</script>
+
+{% endblock content %}

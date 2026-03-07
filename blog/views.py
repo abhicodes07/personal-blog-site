@@ -4,7 +4,9 @@ from .models import Post
 
 
 def home(request):
-    recent_posts = Post.objects.filter(status="published").order_by("-published_date")[:5]
+    recent_posts = Post.objects.filter(status="published").order_by("-published_date")[
+        :5
+    ]
     featured_post = Post.objects.filter(status="published", featured=True).first()
     context = {
         "recent_posts": recent_posts,
@@ -71,3 +73,15 @@ def post_detail(request, slug):
         "seo_updated": post.updated_date.isoformat(),
     }
     return render(request, "blog/post_detail.html", context=context)
+
+
+def about(request):
+    return render(
+        request,
+        "blog/about.html",
+        {
+            "seo_title": "About — Abhinav Asthana",
+            "seo_description": "Software architect, ML enthusiast, and occasional doodler.",
+            "seo_url": request.build_absolute_uri(request.path),
+        },
+    )
