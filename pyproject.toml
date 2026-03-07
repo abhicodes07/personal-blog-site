@@ -6,7 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
   "dj-database-url>=3.1.2",
-  "django-distill>=3.2.7",
   "django-htmx>=1.27.0",
   "django-markdownx>=4.0.9",
   "gunicorn>=25.1.0",
