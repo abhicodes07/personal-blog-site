@@ -12,7 +12,6 @@
 <br/>
 <img src="assets/post.png">
 <br/>
-<br/>
 
 <p align="center">
   <i><b>A minimal, opinionated personal blog built with Django.</b></i>
