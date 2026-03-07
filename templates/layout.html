@@ -106,9 +106,11 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu"
           class="hidden z-50 md:hidden absolute top-16 left-6 right-6 bg-ctp-mantle border border-ctp-surface0 rounded-2xl py-8 flex flex-col items-center gap-6 shadow-2xl">
-          <a href="{% url 'blog:home' %}" class="text-lg font-medium hover:text-ctp-lavender">Home</a>
-          <a href="{% url 'blog:post_list' %}" class="text-lg font-medium text-ctp-lavender">Read</a>
-          <a href="{% url 'blog:about' %}" class="text-lg font-medium hover:text-ctp-lavender">About</a>
+          <a href="{% url 'blog:home' %}" class="text-lg font-medium text-ctp-subtext1 hover:text-ctp-lavender">Home</a>
+          <a href="{% url 'blog:post_list' %}"
+            class="text-lg font-medium text-ctp-subtext1 hover:text-ctp-lavender">Read</a>
+          <a href="{% url 'blog:about' %}"
+            class="text-lg font-medium text-ctp-subtext1 hover:text-ctp-lavender">About</a>
         </div>
       </nav>
     </header>
