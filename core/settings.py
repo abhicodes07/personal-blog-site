@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog",
     "markdownx",
-    "django_distill",
     "django_htmx",
 ]
 
