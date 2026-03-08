@@ -86,17 +86,18 @@ blog/
 ```env
 SECRET_KEY=your-secret-key-here
 DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
+ALLOWED_HOSTS=localhost,127.0.0.1 # add your custom domain
 SESSION_COOKIE_SECURE=False
 CSRF_COOKIE_SECURE=False
 SECURE_HSTS_SECONDS=0
+CSRF_TRUSTED_ORIGINS=your-custom-domain # if any
 ```
 
 > For production, set `DEBUG=False`, use a strong `SECRET_KEY`, and configure proper `ALLOWED_HOSTS`.
 
 ## ✏️ Writing Posts
 
-- Posts are authored in Markdown via the Django admin at `/admin/`.
+- Posts are authored in Markdown via the Django admin.
 
 **Supported Markdown features**
 
