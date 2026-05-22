@@ -75,7 +75,10 @@ if PROJECT_ENVIORNMENT == "production":
     DATABASE_URL = config("DATABASE_URL", default=None)
 
     if not DATABASE_URL:
-        raise ImproperlyConfigured("DATABASE_URL environment variable is not set!")
+        raise ImproperlyConfigured(
+            "DATABASE_URL environment variable is missing! "
+            "Add it in Render Dashboard → Environment."
+        )
 
     DATABASES = {
         "default": dj_database_url.config(
@@ -85,14 +88,18 @@ if PROJECT_ENVIORNMENT == "production":
             ssl_require=True,
         )
     }
+
     # Force SSL for Supabase
     DATABASES["default"].setdefault("OPTIONS", {})
     DATABASES["default"]["OPTIONS"]["sslmode"] = "require"
 
 else:
+    # Local Development (SQLite)
     DATABASES = {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
 
 # Password validation
