@@ -73,32 +73,20 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 if PROJECT_ENVIORNMENT == "production":
-    DATABASE_URL = config("DATABASE_URL", default=None)
-
-    if not DATABASE_URL:
-        raise ImproperlyConfigured(
-            "DATABASE_URL environment variable is missing on Render!"
-        )
-
-    result = urllib.parse.urlparse(DATABASE_URL)
-
     DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": result.path[1:],  # Remove leading '/'
-            "USER": result.username,
-            "PASSWORD": result.password,
-            "HOST": result.hostname,
-            "PORT": result.port or 5432,
-            "OPTIONS": {
-                "sslmode": "require",  # Required for Supabase
-            },
-            "CONN_MAX_AGE": 600,
-        }
+        "default": dj_database_url.config(
+            default=config("DATABASE_URL"),
+            conn_max_age=600,
+            conn_health_checks=True,
+            ssl_require=True,
+        )
     }
 
+    # Force SSL for Supabase
+    DATABASES["default"].setdefault("OPTIONS", {})
+    DATABASES["default"]["OPTIONS"]["sslmode"] = "require"
+
 else:
-    # Local Development
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
