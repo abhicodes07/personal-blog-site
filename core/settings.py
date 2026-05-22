@@ -72,24 +72,28 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 if PROJECT_ENVIORNMENT == "production":
+    DATABASE_URL = config("DATABASE_URL", default=None)
+
+    if not DATABASE_URL:
+        raise ImproperlyConfigured("DATABASE_URL environment variable is not set!")
+
     DATABASES = {
         "default": dj_database_url.config(
-            default=config("DATABASE_URL"),  # fallback
+            default=DATABASE_URL,
             conn_max_age=600,
             conn_health_checks=True,
-            ssl_require=True,  # Important for Supabase
+            ssl_require=True,
         )
     }
     # Force SSL for Supabase
-    DATABASES["default"]["OPTIONS"] = {
-        "sslmode": "require",
-    }
+    DATABASES["default"].setdefault("OPTIONS", {})
+    DATABASES["default"]["OPTIONS"]["sslmode"] = "require"
+
 else:
     DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
