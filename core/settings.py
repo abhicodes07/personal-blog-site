@@ -1,7 +1,6 @@
 from pathlib import Path
 from decouple import config, Csv
 import dj_database_url
-from urllib.parse import urlparse, parse_qsl
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -72,18 +71,12 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-tmpPostgres = urlparse(config("DATABASE_URL"))
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": tmpPostgres.path.replace("/", ""),
-        "USER": tmpPostgres.username,
-        "PASSWORD": tmpPostgres.password,
-        "HOST": tmpPostgres.hostname,
-        "PORT": 5432,
-        "OPTIONS": dict(parse_qsl(tmpPostgres.query)),
-    }
+    "default": dj_database_url.config(
+        default=config("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True,
+    )
     if PROJECT_ENVIORNMENT == "production"
     else {
         "ENGINE": "django.db.backends.sqlite3",
