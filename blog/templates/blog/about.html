@@ -198,17 +198,27 @@
       <span class="material-symbols-outlined text-sm">person</span>
       About me
     </div>
-    <h1
-      class="text-4xl md:text-5xl font-bold tracking-tight text-ctp-rosewater font-serif mb-4 animate-fade-up delay-200">
-      Abhinav Asthana
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight font-serif mb-4 animate-fade-up delay-200">
+      Hi! there,
+      <span class="text-ctp-peach">I'm Abhinav</span>
     </h1>
+
+    {% comment %}
     <p class="text-ctp-subtext1 text-lg leading-relaxed max-w-xl animate-fade-up delay-250">
       Software architect, math enthusiast, and occasional doodler — building
       things at the intersection of <span class="text-ctp-mauve font-medium">clean systems</span>,
       <span class="text-ctp-blue font-medium">intelligent machines</span>, and
       <span class="text-ctp-green font-medium">minimal aesthetics</span>.
     </p>
+    {% endcomment %}
 
+    <p class="flex flex-col text-ctp-subtext1 text-lg leading-relaxed max-w-xl animate-fade-up delay-250">
+      <span class="font-medium">Welcome to my <span class="text-ctp-green">digital garden.</span></span>
+      <span>This is a quiet corner where I plant notes, draft ideas and updates on writing, coding, art or whatever I
+        happen
+        to be learning right now.</span>
+    </p>
+    {% comment %}
     <!-- Social pills -->
     <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-6 animate-fade-up delay-300">
       <a href="https://github.com/abhicodes07"
@@ -227,9 +237,12 @@
         LinkedIn
       </a>
     </div>
+    {% endcomment %}
   </div>
 
   <!-- Avatar -->
+  {% comment %}
+
   <div class="relative avatar-ring shrink-0 animate-scale-in delay-100">
     <div
       class="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-2 border-ctp-lavender shadow-2xl shadow-ctp-lavender/20">
@@ -239,6 +252,7 @@
     <span class="absolute bottom-2 right-2 w-4 h-4 bg-ctp-green rounded-full border-2 border-ctp-base shadow"></span>
   </div>
 
+  {% endcomment %}
 </section>
 
 <!-- ── SECTION DIVIDER HELPER ─────────────────────────────────── -->
@@ -255,25 +269,12 @@
   <div
     class="bg-ctp-surface0/30 border border-ctp-surface1 rounded-3xl p-8 space-y-5 text-ctp-subtext1 text-[16px] leading-relaxed">
     <p>
-      I'm a software architect and ML enthusiast who loves reasoning from first principles —
-      whether that means tracing a bug down to a single errant pointer in
-      <span class="text-ctp-peach font-medium font-mono text-sm">C</span>,
-      or proving a convergence bound on a gradient-descent variant at 2 AM.
+      I’m a software developer with a deep love for machine learning and problem-solving. My daily toolkit includes
+      Django, APIs, and Linux, but I’m just as happy diving into low-level C code or AI research papers.
     </p>
     <p>
-      By day I architect web systems with <span class="text-ctp-green font-medium">Django</span>,
-      design APIs documented in <span class="text-ctp-peach font-medium">Postman</span>,
-      and run them on <span class="text-ctp-blue font-medium">Linux</span> machines I've
-      inevitably over-configured. By night I read papers on
-      <span class="text-ctp-mauve font-medium">AI / ML</span>, grind
-      <span class="text-ctp-yellow font-medium">data structures</span> problems,
-      or fill a sketchbook with whatever my hand decides to draw.
-    </p>
-    <p>
-      When I step away from the screen, you'll find me outside — hanging from a bar
-      working on <span class="text-ctp-red font-medium">calisthenics</span> skills,
-      or just sitting somewhere quiet watching
-      <span class="text-ctp-teal font-medium">nature</span> do its thing.
+      Outside of tech, I like to keep things analog—you can usually find me sketching, doodling, or just hanging out
+      outdoors enjoying some quiet time in nature.
     </p>
   </div>
 </section>
@@ -351,50 +352,6 @@
       <p class="text-ctp-text font-semibold text-sm mb-1">Django</p>
       <p class="text-ctp-subtext0 text-xs leading-relaxed">Batteries-included web framework. ORM lover, HTMX enjoyer.
       </p>
-    </div>
-
-    <!-- Postman -->
-    <div
-      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-sapphire hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-sapphire/10 rounded-2xl p-5">
-      <div class="w-9 h-9 rounded-xl bg-ctp-sapphire/10 flex items-center justify-center mb-3">
-        <span class="material-symbols-outlined text-ctp-sapphire text-lg">api</span>
-      </div>
-      <p class="text-ctp-text font-semibold text-sm mb-1">Postman</p>
-      <p class="text-ctp-subtext0 text-xs leading-relaxed">API design, testing collections, and keeping contracts
-        honest.</p>
-    </div>
-
-    <!-- Doodling / Art -->
-    <div
-      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-flamingo hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-flamingo/10 rounded-2xl p-5">
-      <div class="w-9 h-9 rounded-xl bg-ctp-flamingo/10 flex items-center justify-center mb-3">
-        <span class="material-symbols-outlined text-ctp-flamingo text-lg">draw</span>
-      </div>
-      <p class="text-ctp-text font-semibold text-sm mb-1">Doodling &amp; Art</p>
-      <p class="text-ctp-subtext0 text-xs leading-relaxed">Sketchbooks, fine-liners, and the bliss of drawing with zero
-        agenda.</p>
-    </div>
-
-    <!-- Calisthenics -->
-    <div
-      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-red hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-red/10 rounded-2xl p-5">
-      <div class="w-9 h-9 rounded-xl bg-ctp-red/10 flex items-center justify-center mb-3">
-        <span class="material-symbols-outlined text-ctp-red text-lg">fitness_center</span>
-      </div>
-      <p class="text-ctp-text font-semibold text-sm mb-1">Calisthenics</p>
-      <p class="text-ctp-subtext0 text-xs leading-relaxed">Bodyweight mastery. Working toward the planche, one rep at a
-        time.</p>
-    </div>
-
-    <!-- Nature -->
-    <div
-      class="interest-card bg-ctp-surface0/40 border border-ctp-surface1 hover:border-ctp-teal hover:bg-ctp-surface0/70 hover:shadow-lg hover:shadow-ctp-teal/10 rounded-2xl p-5">
-      <div class="w-9 h-9 rounded-xl bg-ctp-teal/10 flex items-center justify-center mb-3">
-        <span class="material-symbols-outlined text-ctp-teal text-lg">park</span>
-      </div>
-      <p class="text-ctp-text font-semibold text-sm mb-1">Nature</p>
-      <p class="text-ctp-subtext0 text-xs leading-relaxed">Long walks, open skies, and the kind of silence screens can't
-        replicate.</p>
     </div>
 
   </div>
@@ -490,18 +447,6 @@
       </div>
     </div>
 
-    <!-- Postman -->
-    <div class="skill-item">
-      <div class="flex justify-between items-baseline mb-2">
-        <span class="text-sm font-medium text-ctp-text">Postman / API Design</span>
-        <span class="text-xs text-ctp-overlay1 font-mono skill-label">82%</span>
-      </div>
-      <div class="h-2 w-full bg-ctp-surface1 rounded-full overflow-hidden">
-        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-ctp-sapphire to-ctp-blue" data-width="82%">
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -533,16 +478,6 @@
         <p class="text-ctp-text font-medium text-sm">This blog — Django + HTMX + Catppuccin</p>
         <p class="text-ctp-subtext0 text-xs mt-0.5">A minimal, Markdown-first writing space with no ads, no trackers.
         </p>
-      </div>
-    </div>
-
-    <!-- Practising -->
-    <div class="flex gap-4 items-start group">
-      <div class="timeline-dot mt-1.5 group-hover:bg-ctp-red transition-colors duration-200"></div>
-      <div>
-        <p class="text-xs uppercase tracking-widest text-ctp-overlay0 mb-1">Practising</p>
-        <p class="text-ctp-text font-medium text-sm">Calisthenics — muscle-up → front lever progression</p>
-        <p class="text-ctp-subtext0 text-xs mt-0.5">Three sessions a week. Slow, deliberate, consistent.</p>
       </div>
     </div>
 
