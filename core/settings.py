@@ -2,13 +2,12 @@ from pathlib import Path
 from decouple import config, Csv
 import dj_database_url
 import os
-import urllib.parse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # project enviornment
-PROJECT_ENVIORNMENT = config("PROJECT_ENVIORNMENT")
+PROJECT_ENVIORNMENT = config("PROJECT_ENVIORNMENT", default="development")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("SECRET_KEY")
@@ -158,5 +157,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", cast=bool, default=False)
 SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", cast=bool, default=False)
 CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", cast=bool, default=False)
-SECURE_HSTS_SECONDS = config("SECURE_HSTS_SECONDS", cast=int)
+SECURE_HSTS_SECONDS = config("SECURE_HSTS_SECONDS", cast=int, default=0)
 CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="", cast=Csv())
