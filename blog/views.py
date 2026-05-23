@@ -12,7 +12,7 @@ def home(request):
         "recent_posts": recent_posts,
         "featured_post": featured_post,
         # SEO
-        "seo_title": "Abhinav Asthana — Writing on Design, Code & Systems",
+        "seo_title": "Abhinav Asthana — Developer and Writer",
         "seo_description": "Exploring the intersection of minimal aesthetics, functional programming, and the quiet pursuit of meaningful digital experiences.",
         "seo_url": request.build_absolute_uri("/"),
     }
@@ -81,7 +81,7 @@ def about(request):
         "blog/about.html",
         {
             "seo_title": "About — Abhinav Asthana",
-            "seo_description": "Software architect, ML enthusiast, and occasional doodler.",
+            "seo_description": "Developer and Writer",
             "seo_url": request.build_absolute_uri(request.path),
         },
     )
